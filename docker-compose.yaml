@@ -1,0 +1,9 @@
+version: '3.9'
+services:
+  nginx-service:
+    container_name: html-test
+    image: html-server:1.0.0
+    ports:
+      - "8080:80"
+    env_file: .env
+    
