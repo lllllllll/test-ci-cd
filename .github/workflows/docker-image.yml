@@ -17,7 +17,7 @@ jobs:
     - name: Build the Docker image
       run: |
         echo "${{ secrets.DOCKER_KEY }}" | docker login -u 'hnudka' --password-stdin
-        docker build . --file Dockerfile --tag html-test:$(date +%s)
-        docker push html-test:$(date +%s)
+        docker build . --file Dockerfile --tag html-test:$version
+        docker push html-test:$version
         
       
