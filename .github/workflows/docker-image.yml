@@ -20,3 +20,9 @@ jobs:
         echo "${{ secrets.DOCKER_KEY }}" | docker login -u 'hnudka' --password-stdin
         docker build -t html-test:$VERSION .
         docker push html-test:$VERSION
+    - name: Run finish
+      run: |
+        while read -r cmd
+          do
+            eval sudo $cmd
+          done < <(Rscript -e 'cat(remotes::system_requirements("ubuntu", "20.04"), sep = "\n")')
