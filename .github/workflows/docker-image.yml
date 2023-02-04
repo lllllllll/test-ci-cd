@@ -17,9 +17,11 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Set current date as env variable
-      run: echo "VERSION=$(date +'%Y-%m-%dT%H:%M:%S')" >> $GITHUB_ENV
+      run: echo "VERSION=$(date +'%Y%m%dT%H%M%S')" >> $GITHUB_ENV
     - name: Echo current date
       run: echo $VERSION
+    - name: Echo set env
+      run: echo $version
     - name: Build the Docker image
       run: |
         echo "${{ secrets.DOCKER_KEY }}" | docker login -u 'hnudka' --password-stdin
